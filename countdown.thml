@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>We gonna meet soon!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Cutive+Mono);
+
+        body {
+            font: 16px/20px 'Cutive Mono', serif;
+        }
+
+        a {
+            color: #222;
+        }
+
+        .wrap {
+            width: 420px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .secret_message {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        #countdown p {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px;
+            background-color: #f2f2f2;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrap">
+            <a href="#" class="start">click here to start</a>
+            <div class="secret_message" data-text="Hey...,<br>
+                <ul><li>My Cutie</li>
+                    <li>My Darling</li>
+                    <li>My Sunshine</li>
+                    <li>My Boyfriends</li>
+                    <li>My Sweetheart</li>
+                    <li>My Man</li>
+                    <li>My Heart and Soul</li>
+                    <li>My World</li>
+                    <li>My Everything</li></ul><br>
+                I build you a timer so u can check always how long it will take till we meet!!
+                <div align='right'><strong>- sweetmaplesirup</strong></div>">
+            </div>
+            <!-- Countdown Timer HTML -->
+            <div id="countdown">
+                <p id="days"></p>
+                <p id="hours"></p>
+                <p id="minutes"></p>
+                <p id="seconds"></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var running = false;
+        function typeWriter(text, n) {
+            if (n < (text.length)) {
+                $('.secret_message').html(text.substring(0, n + 1) + "❤");
+                n++;
+                setTimeout(function () {
+                    typeWriter(text, n)
+                }, 100);
+            }
+            else {
+                running = false;
+            }
+        }
+
+        $('.start').click(function (e) {
+            e.stopPropagation();
+            if (running == false) {
+                var text = $('.secret_message').data('text');
+                running = true;
+                typeWriter(text, 0);
+            }
+        });
+
+        // Countdown Timer JavaScript
+        var countDownDate = new Date("Jan 27, 2024 13:55:00 EST").getTime();
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerHTML = days + "d ";
+            document.getElementById("hours").innerHTML = hours + "h ";
+            document.getElementById("minutes").innerHTML = minutes + "m ";
+            document.getElementById("seconds").innerHTML = seconds + "s ";
+            
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "Time to meet!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
