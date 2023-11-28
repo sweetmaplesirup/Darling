@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Happy Valentine's day!</title>
+    <title>We gonna meet soon!</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -25,31 +25,40 @@
             margin-top: 10px;
             text-align: left;
         }
+
+        #countdown p {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px;
+            background-color: #f2f2f2;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="wrap">
             <a href="#" class="start">click here to start</a>
-            <div class="secret_message" data-text="Hey {{her_name}},<br>
-                <center><strong>Happy Valentine's Day!</strong></center><br>
-                You are awesome, you know that right?<br>
-                But...Here are <strong> 13 reasons why I like you</strong><br><br>
-                Disclaimer: List is in no perfect order<br><br>
-                <strong>13 reasons why I like you?</strong><br>
-                <ul><li>You are awesome!</li>
-                    <li>You are cute :P</li>
-                    <li>You are beautiful :P</li>
-                    <li>You are smart :D</li>
-                    <li>You are intelligent :D</li>
-                    <li>You code &#x1F5B3</li>
-                    <li>You are sexy &#59;)</li>
-                    <li>You are a foodie &#x1F355&#x1F354&#x1F344</li>
-                    <li>You are caring :D</li>
-                    <li>Aap bandar ho &#x1F412</li>
-                    <li>You can figure out why I have written 13 but mentioned 11 points!</li></ul><br>
-                I hope you will like this :)
-                <div align='right'><strong>- x4150</strong></div>"></div>
+            <div class="secret_message" data-text="Hey...,<br>
+                <ul><li>My Cutie</li>
+                    <li>My Darling</li>
+                    <li>My Sunshine</li>
+                    <li>My Boyfriends</li>
+                    <li>My Sweetheart</li>
+                    <li>My Man</li>
+                    <li>My Heart and Soul</li>
+                    <li>My World</li>
+                    <li>My Everything</li></ul><br>
+                I build you a timer so u can check always how long it will take till we meet. 
+                <div align='right'><strong>I LOVE YOU!! - sweetmaplesirup</strong></div>">
+            </div>
+            <!-- Countdown Timer HTML -->
+            <div id="countdown">
+                <p id="days"></p>
+                <p id="hours"></p>
+                <p id="minutes"></p>
+                <p id="seconds"></p>
+            </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -76,6 +85,28 @@
                 typeWriter(text, 0);
             }
         });
+
+        // Countdown Timer JavaScript
+        var countDownDate = new Date("Jan 27, 2024 13:55:00 EST").getTime();
+        var countdownFunction = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerHTML = days + "d ";
+            document.getElementById("hours").innerHTML = hours + "h ";
+            document.getElementById("minutes").innerHTML = minutes + "m ";
+            document.getElementById("seconds").innerHTML = seconds + "s ";
+            
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "Time to meet!";
+            }
+        }, 1000);
     </script>
 </body>
 </html>
